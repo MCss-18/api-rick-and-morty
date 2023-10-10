@@ -50,7 +50,7 @@ function CharacterList(){
             {
               characters.map((character) => {
                 return(
-                  <div className="card-character col-md-4" key={character.id}>
+                  <div className="card-character col-sm-6 col-md-4" key={character.id}>
                     <Character  character={character} />
                   </div>
                 );

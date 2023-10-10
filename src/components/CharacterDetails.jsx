@@ -1,18 +1,22 @@
 import PropTypes from 'prop-types';
 
-function CharacterDetails({ character }){
+function CharacterDetails({ character, closeInfo }){
+
   return(
-    <div className="character-details">
-        <div className='btn-close'>
-          X
+    <div className={`character-details ${character ? 'show' : ''}`}>
+        <div className='btn-close btn-close-white' onClick={closeInfo}>
+        
         </div>
         <div className='container-details'>
           <div className='container-img'>
-            <img className="img-character img-fluid rounded-pill" src={character.image} alt={character.name} />
+            <img src={character.image} alt={character.name} />
           </div>
           <div className='container-info'>
             <h3>{character.name}</h3>
-            <p>{ character.origin.name }</p>
+            <p>Origin: { character.origin.name }</p>
+            <p>Status: { character.status }</p>
+            <p>Species: { character.species }</p>
+            <p>Gender: { character.gender }</p>
           </div>
         </div>
         
@@ -23,11 +27,15 @@ function CharacterDetails({ character }){
 CharacterDetails.propTypes = {
   character: PropTypes.shape({
     name: PropTypes.string.isRequired,
+    status: PropTypes.string.isRequired,
+    species: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
     origin: PropTypes.shape({
       name: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
+  closeInfo: PropTypes.func.isRequired,
 };
 
 export default CharacterDetails;

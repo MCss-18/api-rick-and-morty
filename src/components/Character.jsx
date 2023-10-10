@@ -1,14 +1,29 @@
 import PropTypes from 'prop-types';
 import CharacterDetails from './CharacterDetails'
+import { useState } from 'react';
 function Character({ character }){
-  
+
+  const [selectedCharacter, setSelectedCharacter] = useState(null);
+
+  const showInfo = () => {
+    setSelectedCharacter(character);
+  };
+
+  const closeInfo = () => {
+    setSelectedCharacter(null);
+  };
 
   return(
     <>
         <h3>{character.name}</h3>
-        <img className="img-character img-fluid rounded-pill" src={character.image} alt={character.name} />
+        <img className="img-character" src={character.image} alt={character.name} />
         <p>{ character.origin.name }</p>
-        <CharacterDetails character={ character }></CharacterDetails>
+        <button onClick={ showInfo }>
+          More info
+        </button>
+        {selectedCharacter && (
+          <CharacterDetails character={selectedCharacter} closeInfo={closeInfo} />
+        )}
     </>
   );
 }

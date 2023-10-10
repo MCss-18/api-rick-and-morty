@@ -19,6 +19,7 @@ body{
   background-color: var(--background-color);
 }
 
+/* ---------------------------- HEADER ---------------------------- */
 .title{
   text-align: center;
   color: var(--main-color);
@@ -30,6 +31,8 @@ body{
 .title:hover{
   text-shadow: 0px 0px 3px var(--second-color);
 }
+
+/* ---------------------------- NAV ---------------------------- */
 
 .navigate{
   display: flex;
@@ -58,7 +61,8 @@ p{
   background-color: #04b4cb;
 }
 
-/*   ITEM CHARACTER */
+/* ---------------------------- ITEM CHARACTER ---------------------------- */
+
 .card-character{
   text-align: center;
   padding: 30px;
@@ -92,13 +96,15 @@ p{
 }
 
 .card-character .img-character{
-  padding-top: 10px;
-  padding-bottom: 5px;
+  border-radius: 100%;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  transform: scale(1.01) perspective(100px);
+  transition: all 0.3s ease;
 }
 
 .card-character .img-character:hover{
-  transform: scale(1.05);
-  transition: all 0.3s ease;
+  transform: scale(1.05) perspective(2500px) rotateY(5deg);
 }
 
 .card-character button{
@@ -116,17 +122,43 @@ p{
   transition: all 0.3s ease;
 }
 
+/* ---------------------------- CHARACTER DETAILS ---------------------------- */
+
 .character-details{
   display: none;
 }
 
 .character-details.show{
   display: block;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  background-color: var(--background-color);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.35);
+  padding: 30px;
+  gap: 15px;
+  z-index: 2;
 }
+
+.character-details.show .container-details{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.character-details.show .container-details .container-img img{
+  width: 85%;
+  border-radius: 100%;
+}
+
+.character-details.show .container-details .container-info p:hover{
+  color: var(--second-color);
+}
+
+/* ---------------------------- FOOTER ---------------------------- */
 
 footer{
   background: #047f91;
@@ -145,46 +177,19 @@ footer{
   color: #212529;
 }
 
+
 @media screen and (max-width: 990px){
   .card-character{
     padding: 20px;
   }
-}
 
-
-/* .loading-character-img{
-  display: flex;
-  gap: 12px;
-}
-
-.loading-character-img div{
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  border-radius: 50%;
-  animation: cycle 1s ease-in-out infinite;
-}
-
-.loading-character-img div:nth-child(1){
-  animation-delay: 0;
-}
-
-.loading-character-img div:nth-child(2){
-  animation-delay: 0.2s;
-}
-
-.loading-character-img div:nth-child(3){
-  animation-delay: 0.4s;
-}
-
-@keyframes cycle{
-  0%{
-    transform: translateY(0);
+  .card-character .img-character{
+    width: 85%;
   }
-  50%{
-    transform: translateY(1rem);
+
+  .character-details.show .container-details{
+    flex-direction: column;
   }
-  100%{
-    transform: translateY(0);
-  }
-} */
+
+}
+
